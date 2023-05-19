@@ -18,7 +18,7 @@ RUN apt-get update \
 FROM compiler-common AS compiler-stylesheet
 RUN cd ~ \
 && git clone https://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@github.com/seamusdunlop112233/openstreetmap-carto-can.git \
-&& cd openstreetmap-carto \
+&& cd openstreetmap-carto-can \
 && sed -i 's/, "unifont Medium", "Unifont Upper Medium"//g' style/fonts.mss \
 && sed -i 's/"Noto Sans Tibetan Regular",//g' style/fonts.mss \
 && sed -i 's/"Noto Sans Tibetan Bold",//g' style/fonts.mss \
@@ -156,7 +156,7 @@ RUN mkdir -p /run/renderd/ \
 RUN echo '[default] \n\
 URI=/tile/ \n\
 TILEDIR=/var/cache/renderd/tiles \n\
-XML=/home/renderer/src/openstreetmap-carto/mapnik.xml \n\
+XML=/home/renderer/src/openstreetmap-carto-can/mapnik.xml \n\
 HOST=localhost \n\
 TILESIZE=256 \n\
 MAXZOOM=20' >> /etc/renderd.conf \
@@ -165,7 +165,7 @@ MAXZOOM=20' >> /etc/renderd.conf \
 # Install helper script
 COPY --from=compiler-helper-script /home/renderer/src/regional /home/renderer/src/regional
 
-COPY --from=compiler-stylesheet /root/openstreetmap-carto /home/renderer/src/openstreetmap-carto-backup
+COPY --from=compiler-stylesheet /root/openstreetmap-carto-can /home/renderer/src/openstreetmap-carto-can-backup
 
 # Start running
 COPY run.sh /
