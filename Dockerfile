@@ -17,8 +17,8 @@ RUN apt-get update \
 
 FROM compiler-common AS compiler-stylesheet
 RUN cd ~ \
-&& git clone https://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@github.com/seamusdunlop112233/openstreetmap-carto-can.git \
-&& cd openstreetmap-carto-can \
+&& git clone --single-branch --branch v5.4.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
+&& cd openstreetmap-carto \
 && sed -i 's/, "unifont Medium", "Unifont Upper Medium"//g' style/fonts.mss \
 && sed -i 's/"Noto Sans Tibetan Regular",//g' style/fonts.mss \
 && sed -i 's/"Noto Sans Tibetan Bold",//g' style/fonts.mss \
@@ -102,7 +102,7 @@ RUN pip3 install \
  pyyaml
 
 # Install carto for stylesheet
-RUN npm install -g carto@0.18.2
+RUN npm install -g carto@1.2.0
 
 # Configure Apache
 RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" >> /etc/apache2/conf-available/mod_tile.conf \
@@ -156,7 +156,7 @@ RUN mkdir -p /run/renderd/ \
 RUN echo '[default] \n\
 URI=/tile/ \n\
 TILEDIR=/var/cache/renderd/tiles \n\
-XML=/home/renderer/src/openstreetmap-carto-can/mapnik.xml \n\
+XML=/home/renderer/src/openstreetmap-carto/mapnik.xml \n\
 HOST=localhost \n\
 TILESIZE=256 \n\
 MAXZOOM=20' >> /etc/renderd.conf \
@@ -165,7 +165,7 @@ MAXZOOM=20' >> /etc/renderd.conf \
 # Install helper script
 COPY --from=compiler-helper-script /home/renderer/src/regional /home/renderer/src/regional
 
-COPY --from=compiler-stylesheet /root/openstreetmap-carto-can /home/renderer/src/openstreetmap-carto-can-backup
+COPY --from=compiler-stylesheet /root/openstreetmap-carto /home/renderer/src/openstreetmap-carto-backup
 
 # Start running
 COPY run.sh /
