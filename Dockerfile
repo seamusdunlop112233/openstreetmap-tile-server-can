@@ -17,7 +17,7 @@ RUN apt-get update \
 
 FROM compiler-common AS compiler-stylesheet
 RUN cd ~ \
-&& git clone https://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@github.com/seamusdunlop112233/openstreetmap-carto-can.git \
+&& git clone https://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@github.com/seamusdunlop112233/openstreetmap-carto-can.git \
 && cd openstreetmap-carto-can \
 && sed -i 's/, "unifont Medium", "Unifont Upper Medium"//g' style/fonts.mss \
 && sed -i 's/"Noto Sans Tibetan Regular",//g' style/fonts.mss \
