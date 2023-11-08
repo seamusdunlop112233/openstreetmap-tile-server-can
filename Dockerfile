@@ -165,7 +165,7 @@ MAXZOOM=20' >> /etc/renderd.conf \
 # Install helper script
 COPY --from=compiler-helper-script /home/renderer/src/regional /home/renderer/src/regional
 
-COPY --from=compiler-stylesheet /root/openstreetmap-carto /home/renderer/src/openstreetmap-carto-backup
+COPY --from=compiler-stylesheet /root/openstreetmap-carto-can /home/renderer/src/openstreetmap-carto-can-backup
 
 # Start running
 COPY run.sh /
