@@ -17,8 +17,8 @@ RUN apt-get update \
 
 FROM compiler-common AS compiler-stylesheet
 RUN cd ~ \
-&& git clone --single-branch --branch v5.4.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
-&& cd openstreetmap-carto \
+&& git clone https://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@github.com/seamusdunlop112233/openstreetmap-carto-can.git \
+&& cd openstreetmap-carto-can \
 && sed -i 's/, "unifont Medium", "Unifont Upper Medium"//g' style/fonts.mss \
 && sed -i 's/"Noto Sans Tibetan Regular",//g' style/fonts.mss \
 && sed -i 's/"Noto Sans Tibetan Bold",//g' style/fonts.mss \
