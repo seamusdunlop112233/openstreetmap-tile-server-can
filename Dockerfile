@@ -142,6 +142,7 @@ RUN mkdir -p /run/renderd/ \
   &&  mkdir  -p  /data/database/  \
   &&  mkdir  -p  /data/style/  \
   &&  mkdir  -p  /home/renderer/src/  \
+  &&  mkdir  -p  /home/renderer/src/openstreetmap-carto-can-backup/ \
   &&  chown  -R  renderer:  /data/  \
   &&  chown  -R  renderer:  /home/renderer/src/  \
   &&  chown  -R  renderer:  /run/renderd  \
