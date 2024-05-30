@@ -2,7 +2,7 @@ version: '3'
 
 services:
   map:
-    image: osmt2
+    image: openstreetmap-tile-server-can
     volumes:
       - osm-data:/data/database/
     ports:
