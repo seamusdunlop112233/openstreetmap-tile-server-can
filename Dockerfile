@@ -169,6 +169,7 @@ COPY --from=compiler-stylesheet /root/openstreetmap-carto-can /home/renderer/src
 
 # Start running
 COPY run.sh /
+RUN chmod +x run.sh 
 ENTRYPOINT ["/run.sh"]
 CMD []
 EXPOSE 80 5432
